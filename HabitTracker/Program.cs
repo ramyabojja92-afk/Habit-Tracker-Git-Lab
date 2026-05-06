@@ -21,7 +21,7 @@ while (running)
 
     if (choice == "1")
     {
-        Console.WriteLine("Add Habit selected");
+        service.AddHabit();
     }
     else if (choice == "2")
     {

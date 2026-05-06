@@ -17,7 +17,24 @@ namespace HabitTracker
         //Add a new habit
         public void AddHabit()
         {
-            Console.WriteLine("Add Habit selected");
+            Console.Write("Enter habit name: ");
+            string? name = Console.ReadLine();
+
+            if (string.IsNullOrWhiteSpace(name))
+            {
+                Console.WriteLine("Habit name cannot be empty.");
+                return;
+            }
+
+            Habit newHabit = new Habit
+            {
+                Name = name,
+                IsDone = false
+            };
+
+            habits.Add(newHabit);
+
+            Console.WriteLine($"Habit '{name}' has been added.");
         }
 
         //View habits
