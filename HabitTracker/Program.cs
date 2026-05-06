@@ -1,4 +1,9 @@
-﻿bool running = true;
+﻿
+using HabitTracker;
+
+HabitService service = new HabitService();
+
+bool running = true;
 
 while (running)
 {
@@ -11,6 +16,8 @@ while (running)
     Console.Write("Choose an option: ");
 
     string? choice = Console.ReadLine();
+    Console.WriteLine();
+
 
     if (choice == "1")
     {
@@ -18,7 +25,8 @@ while (running)
     }
     else if (choice == "2")
     {
-        Console.WriteLine("View Habits selected");
+        ShowHabits();
+        break;
     }
     else if (choice == "3")
     {
@@ -39,4 +47,26 @@ while (running)
     }
 
     Console.WriteLine();
+}
+
+// Method to display habits
+void ShowHabits()
+{
+    var habits = service.GetHabits();
+
+    if (habits.Count == 0)
+    {
+        Console.WriteLine("No habits found.");
+        return;
+    }
+
+    Console.WriteLine("Your Habits:");
+
+    for (int i = 0; i < habits.Count; i++)
+    {
+        var habit = habits[i];
+        string status = habit.IsDone ? "Done" : "Not Done";
+
+        Console.WriteLine($"{i + 1}. {habit.Name} - {status}");
+    }
 }
