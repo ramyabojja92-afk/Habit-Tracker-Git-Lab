@@ -30,7 +30,8 @@ while (running)
     }
     else if (choice == "3")
     {
-        Console.WriteLine("Mark Habit as Done selected");
+        MarkHabitAsDone();
+            break;
     }
     else if (choice == "4")
     {
@@ -68,5 +69,39 @@ void ShowHabits()
         string status = habit.IsDone ? "Done" : "Not Done";
 
         Console.WriteLine($"{i + 1}. {habit.Name} - {status}");
+    }
+
+}
+
+    
+// Method to mark a habit as done
+void MarkHabitAsDone()
+{
+    var habits = service.GetHabits();
+
+    if (habits.Count == 0)
+    {
+        Console.WriteLine("No habits found.");
+        return;
+    }
+
+    ShowHabits();
+    Console.Write("Enter habit number to mark as done: ");
+
+    if (!int.TryParse(Console.ReadLine(), out int number))
+    {
+        Console.WriteLine("Invalid input. Please enter a number.");
+        return;
+    }
+
+    bool success = service.MarkHabitAsDone(number - 1);
+
+    if (success)
+    {
+        Console.WriteLine("Habit marked as done.");
+    }
+    else
+    {
+        Console.WriteLine("Invalid habit number.");
     }
 }
