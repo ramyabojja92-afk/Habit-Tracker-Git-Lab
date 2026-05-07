@@ -1,5 +1,4 @@
-﻿
-using HabitTracker;
+﻿using HabitTracker;
 
 HabitService service = new HabitService();
 
@@ -18,7 +17,6 @@ while (running)
     string? choice = Console.ReadLine();
     Console.WriteLine();
 
-
     if (choice == "1")
     {
         service.AddHabit();
@@ -26,7 +24,6 @@ while (running)
     else if (choice == "2")
     {
         ShowHabits();
-        break;
     }
     else if (choice == "3")
     {
@@ -34,7 +31,7 @@ while (running)
     }
     else if (choice == "4")
     {
-        Console.WriteLine("Delete Habit selected");
+        service.DeleteHabit();
     }
     else if (choice == "5")
     {
