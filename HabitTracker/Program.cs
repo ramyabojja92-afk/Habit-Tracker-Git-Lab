@@ -97,3 +97,4 @@ void ShowHabits()
 
         Console.WriteLine($"{i + 1}. {habit.Name} - {status}");
     }
+}
