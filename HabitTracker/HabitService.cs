@@ -57,9 +57,16 @@ namespace HabitTracker
         }
 
         //Delete a habit
-        public void DeleteHabit()
+        public bool DeleteHabit(int index)
+       {
+        if (index < 0 || index >= habits.Count)
         {
-            Console.WriteLine("Delete Habit selected");
-        }
+        return false;
+         }
+
+         habits.RemoveAt(index);
+
+         return true;
+         }
     }
 }
