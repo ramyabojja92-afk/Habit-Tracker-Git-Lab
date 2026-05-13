@@ -9,7 +9,7 @@ namespace HabitTracker
         private List<Habit> habits = new()
         {
             new Habit { Name = "Drink Water", IsDone = false },
-            new Habit { Name = "Read 10 Pages", IsDone = true },
+            new Habit { Name = "Read 10 Pages", IsDone = false },
             new Habit { Name = "Walk 30 Minutes", IsDone = false }
         };
 
@@ -45,11 +45,16 @@ namespace HabitTracker
 
 
         //Mark a habit as done
-        public void MarkHabitAsDone()
+        public bool MarkHabitAsDone(int index)
         {
-            Console.WriteLine("Mark Habit as Done selected");
-        }
+            if (index < 0 || index >= habits.Count)
+            {
+                return false;
+            }
 
+            habits[index].IsDone = true;
+            return true;
+        }
 
         //Delete a habit
         public void DeleteHabit()
