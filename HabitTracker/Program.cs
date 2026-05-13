@@ -10,7 +10,7 @@ while (running)
     Console.WriteLine("===== Habit Tracker =====");
     Console.WriteLine("1. Add Habit");
     Console.WriteLine("2. View Habits");
-    Console.WriteLine("3. Mark Habit as Done");
+    Console.WriteLine("3. complete habit");
     Console.WriteLine("4. Delete Habit");
     Console.WriteLine("5. Exit");
     Console.Write("Choose an option: ");
